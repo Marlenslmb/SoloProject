@@ -1,0 +1,35 @@
+.bottomFooterMain{
+    width: 100%;
+    height: 450px;
+    background-image: url('https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//home/background4.png');
+    background-position: center top;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    margin: 40px auto;
+    padding: 50px 150px;
+    background-size: cover;
+}
+.imageSpan{
+    font-size: 60px;
+    color: rgb(245, 199, 131);
+    font-family: 'Radiance', 'Noto sans', 'sans-serif';
+    box-sizing: border-box;
+}
+.bottomSecondFooter{
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.firstimage{
+    max-height: 50px;
+    margin: 0 15 20 15;
+    width: 150px;
+}
+.secondimage{
+    width: 150px;
+    max-height: 50px;
+    margin: 0 15 20 15;
+}
