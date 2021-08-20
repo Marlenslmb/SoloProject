@@ -10,24 +10,28 @@ import MainBody from './components/MainBody/MainBody';
 import BottomFooter from './components/BottomFooter/BottomFooter';
 import HeroList from './components/HeroCards/HeroList';
 import CarouselsCard from './components/CarouselCard/CarouselCard';
+import Details from './components/HeroCards/Details';
+import EditHero from './components/CRUD/EditHero';
+import Content from './components/Main/Content';
 
 const Routes = () => {
     return (
-        <DotaContextProvider>
+        <>
+         <DotaContextProvider>
             <BrowserRouter>
                 <Footer />
                 <Navbar />
-                <CarouselMy />
-                <MainBody />  
                     <Switch>
-                        <Route exact path='/' compponent={Main} />
+                        <Route exact path='/' component={Main} />
+                        <Route exact path='/heroes' component={Content} />
                         <Route exact path='/add' component={AddHero} />
-                        <Route exact path='/heroes' component={HeroList} />
+                        <Route exact path='/detail/:id' component={Details} />
+                        <Route exact path='/edit/:id' component={EditHero} />
                     </Switch> 
-                <CarouselsCard />
                 <BottomFooter />
-            </BrowserRouter>
+            </BrowserRouter> 
         </DotaContextProvider>
+        </>
     );
 };
 

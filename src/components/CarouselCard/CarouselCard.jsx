@@ -9,7 +9,7 @@ const CarouselsCard = () => {
   const [state, setState] = useState({
     goToSlide: 0,
     offsetRadius: 2,
-    showNavigation: true,
+    // showNavigation: true,
     config: config.gentle
   });
   const { v4: uuidv4 } = require('uuid');
@@ -124,7 +124,7 @@ const CarouselsCard = () => {
   return (
     <div data-aos="zoom-in-down">
     <div
-      style={{ width: "70%", height: "500px", margin: "0 auto" }}
+      style={{ width: "70%", height: "450px", margin: "0 auto" }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >

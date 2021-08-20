@@ -1,0 +1,7 @@
+.paginatedDiv{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(245, 199, 131) !important;
+}

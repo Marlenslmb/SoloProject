@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { dotaContext } from '../DotaContext/DotaContext';
+import './AddHero.css';
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,11 +47,11 @@ const AddHero = () => {
             values.image = "https://images2.alphacoders.com/474/thumb-1920-474206.jpg"
         }
         addHeroes(values)
-        history.push('/')
+        // history.push('/')
     }
 
     return (
-        <Paper elevation={3} className={classes.paper} style={{background: '#44814e'},{color:'#fff'},{height:'100%'}}>
+        <Paper elevation={3} className={classes.paper} style={{background: '#44814e'},{color:'#fff'},{height:'100%'}, {backgroundColor: 'rgb(245, 199, 131)'}}>
             <h1 style={{textAlign: 'center'}}>Добавить героя</h1>
             <div style={{display: 'flex', justifyContent: 'space-around', color: 'black'}}>
                 <div>
@@ -70,7 +71,7 @@ const AddHero = () => {
                             <TextField name='description' onChange={handleInp} value={values.description} variant='outlined' label='Description' />
                         </form>
                         <IconButton aria-label="share" onClick={handleSave}>
-                            <Button variant="contained" color="#2c6335">Добавить</Button>
+                            <Button variant="contained" color="#2c6335" className='btnAdd'>Добавить</Button>
                         </IconButton>
                 </div>
 

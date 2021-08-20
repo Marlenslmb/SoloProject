@@ -1,26 +1,26 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { dotaContext } from '../DotaContext/DotaContext';
+import AOS from 'aos';
+import { useEffect } from 'react';
 
-const HeroCard = ({item, history}) => {
+const HeroCard = ({item}) => {
     const { deleteHeroes } = useContext(dotaContext)
-    console.log(item)
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1500
+        })
+    }, [])
+
     return (
-        <div>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" style={{width: '165px', margin: '0 auto', height: "200px"}} src={item.image} />
-                <Card.Body>
-                    <Card.Title>
-                        {item.name}
-                    </Card.Title>
-                    <Card.Text>
-                    {item.description.substring(0,100)}...
-                    </Card.Text>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                    <ListGroupItem>{item.type}</ListGroupItem>
-                </ListGroup>
+        <div data-aos="zoom-out-down">
+            <Card style={{ width: '18rem', height: 200 , marginTop: '5px', marginBottom: '5px'}}>
+                <Link to={`/detail/${item.id}`} style={{width: '100%', margin: '0 auto', height: "100%"}}>
+                <Card.Img variant="top" style={{width: '100%', margin: '0 auto', height: "100%"}} src={item.image} />
+                </Link>
             </Card>
         </div>
     );
