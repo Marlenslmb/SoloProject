@@ -1,6 +1,5 @@
 import React from 'react';
 import MainVideo from '../Video/MainVideo.mp4';
-import Pudge from '../Video/Pudge.mp4';
 
 const CarouselMy = () => {
     return (

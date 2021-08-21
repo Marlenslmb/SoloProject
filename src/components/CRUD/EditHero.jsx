@@ -72,7 +72,7 @@ const EditHero = () => {
                     }}>                           
                     <form className={classes.root} noValidate autoComplete="off">
                         <TextField name="image" onChange={handleEditInp} value={values.image} variant="outlined" label=""/>
-                        <TextField name="title" onChange={handleEditInp} value={values.name} variant="outlined" label=""/>
+                        <TextField name="name" onChange={handleEditInp} value={values.name} variant="outlined" label=""/>
                         <TextField name="type" onChange={handleEditInp} value={values.type} variant="outlined" label=""/>
                         <TextField name="description" onChange={handleEditInp} value={values.description} variant="outlined" label=""/>
                     </form>

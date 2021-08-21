@@ -14,8 +14,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const Details = ({item, history}) => {
-    console.log(item)
+const Details = ({ history}) => {
     const {id} = useParams()
     const {detail, getDetail, deleteHeroes} = useContext(dotaContext)
     const classes = useStyles()
@@ -48,8 +47,9 @@ const Details = ({item, history}) => {
                             <Link to={`/edit/${id}`}>
                                 <Button variant="contained" color="#2c6335" style={{fontFamily: 'Noto-sans san-serif',backgroundColor: 'rgb(245, 199, 131)',}}>Изменить</Button>
                             </Link>
-                            <Button variant="contained" onClick={() => deleteHeroes(item.id, history)} color="#2c6335" style={{fontFamily: 'Noto-sans san-serif',backgroundColor: 'rgb(245, 199, 131)',}}>Удалить</Button>
-
+                            <Link to='/heroes'>
+                                <Button variant="contained" onClick={() => deleteHeroes(id, history)} color="#2c6335" style={{fontFamily: 'Noto-sans san-serif',backgroundColor: 'rgb(245, 199, 131)',}}>Удалить</Button>
+                            </Link>
                         </div>
                     </div>
 

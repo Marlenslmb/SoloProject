@@ -4,8 +4,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
+import { Button, Form, FormControl } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { dotaContext } from '../DotaContext/DotaContext';
+import Filter from '../Filter/Filter';
 import HeroCard from './HeroCard';
 import './paginated.css'
 
@@ -17,6 +19,7 @@ const HeroList = () => {
     useEffect(() => {
         getHeroes(history)
     }, [])
+    console.log(paginatedPages);
 
     function getPage(){
         const search = new URLSearchParams(history.location.search)
@@ -28,7 +31,7 @@ const HeroList = () => {
 
     const handlePage = (e, pageVal) => {
         const search = new URLSearchParams(history.location.search)
-        search.get('_page', pageVal)
+        search.set('_page', pageVal)
         history.push(`${history.location.pathname}?${search.toString()}`)
         getHeroes(history)
         setPage(pageVal)
@@ -37,6 +40,20 @@ const HeroList = () => {
 
     return (
         <>
+        <div className="divdivdiv">
+            <Form className="d-flex" style={{width: 350, height: 50, marginRight: 20, alignItems: 'center'}}>
+                <FormControl
+                    type="search"
+                    placeholder="Search"
+                    className="mr-2"
+                    aria-label="Search"
+                    style={{backgroundColor: 'rgb(245, 199, 131)'}}
+                />
+                <Button variant="outline-success" style={{backgroundColor: 'rgb(245, 199, 131)', color: 'black'}}>Search</Button>
+            </Form>
+
+            <Filter />
+        </div>
             <Grid container spacing={3} justify="space-evenly" style={{marginTop: '0px'}}>
                 {
                     heroes ? (
@@ -48,10 +65,10 @@ const HeroList = () => {
             </Grid>
             <div className="paginatedDiv">
                 <Pagination
-                count={paginatedPages}
-                color="secondary"
-                onChange={handlePage}
-                page={+page}
+                    count={paginatedPages}
+                    color="secondary"
+                    onChange={handlePage}
+                    page={+page}
                 />
             </div>
         </>

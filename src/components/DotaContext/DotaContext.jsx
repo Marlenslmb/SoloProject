@@ -46,8 +46,18 @@ const DotaContextProvider = ({children}) => {
         }
     }
 
-    const getHeroes = async () => {
-        let data = await axios.get(`${API}/hero`)
+    const getHeroes = async (history) => {
+
+        // let data = await axios.get(`windows.location/hero?_limit=60`)
+        // dispatch({
+        //     type: "GET_HERO",
+        //     payload: data
+        // })
+
+        const search = new URLSearchParams(history.location.search)
+        search.set('_limit', 60)
+        history.push(`${history.location.pathname}?${search.toString()}`)
+        let data = await axios(`${API}/hero${window.location.search}`)
         dispatch({
             type: "GET_HERO",
             payload: data
@@ -89,7 +99,6 @@ const DotaContextProvider = ({children}) => {
 
     }
 
-    console.log(state.detail)
 
     return (
         <dotaContext.Provider value={{

@@ -1,7 +1,25 @@
 .paginatedDiv{
+    margin: 0 auto;
+    margin-bottom: 20px;
     margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(245, 199, 131) !important;
+    width: 300px;
+}
+.cardclass:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s;
+}
+.divdivdiv{
+    width: 600;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
 }

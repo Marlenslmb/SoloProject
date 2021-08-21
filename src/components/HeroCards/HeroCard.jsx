@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { dotaContext } from '../DotaContext/DotaContext';
 import AOS from 'aos';
@@ -16,13 +16,15 @@ const HeroCard = ({item}) => {
     }, [])
 
     return (
-        <div data-aos="zoom-out-down">
-            <Card style={{ width: '18rem', height: 200 , marginTop: '5px', marginBottom: '5px'}}>
-                <Link to={`/detail/${item.id}`} style={{width: '100%', margin: '0 auto', height: "100%"}}>
-                <Card.Img variant="top" style={{width: '100%', margin: '0 auto', height: "100%"}} src={item.image} />
-                </Link>
-            </Card>
-        </div>
+        <>
+                <div data-aos="zoom-out-down">
+                    <Card style={{ width: '18rem', height: 200 , marginTop: '5px', marginBottom: '5px'}} className="cardclass">
+                        <Link to={`/detail/${item.id}`} style={{width: '100%', margin: '0 auto', height: "100%"}}>
+                        <Card.Img variant="top" style={{width: '100%', margin: '0 auto', height: "100%"}} src={item.image} />
+                        </Link>
+                    </Card>
+                </div>
+        </>
     );
 };
 

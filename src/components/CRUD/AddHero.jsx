@@ -47,7 +47,7 @@ const AddHero = () => {
             values.image = "https://images2.alphacoders.com/474/thumb-1920-474206.jpg"
         }
         addHeroes(values)
-        // history.push('/')
+        history.push('/')
     }
 
     return (

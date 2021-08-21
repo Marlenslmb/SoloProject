@@ -12,18 +12,7 @@ import CarouselsCard from './components/CarouselCard/CarouselCard';
 
 function App() {
   return (
-    
-    // <DotaContextProvider>
-    //   <BrowserRouter>
-    //     <Footer />
-    //     <Navbar />
-    //     <CarouselMy />
-    //     <MainBody /> 
         <Routes />
-    //    </BrowserRouter>
-    //   <CarouselsCard />
-    //   <BottomFooter />
-    // </DotaContextProvider> 
     
   );
 }
