@@ -15,6 +15,7 @@ const HeroList = () => {
     let history = useHistory()
     const { heroes, getHeroes, paginatedPages } = useContext(dotaContext)
     const [page, setPage] = useState(getPage())
+    const [searchVal, setSearchVal] = useState(getSearchVal() || '')
 
     useEffect(() => {
         getHeroes(history)
@@ -38,6 +39,19 @@ const HeroList = () => {
         window.scrollTo({top: 0, behavior: 'smooth'})
     }
 
+    function getSearchVal(){
+        const search = new URLSearchParams(history.location.search)
+        return search.get('q')
+    }
+
+    const handleValue = (e) => {
+        const search = new URLSearchParams(history.location.search)
+        search.set('q', e.target.value)
+        history.push(`${history.location.pathname}?${search.toString()}`)
+        setSearchVal(e.target.value)
+        getHeroes(history)
+    }
+
     return (
         <>
         <div className="divdivdiv">
@@ -48,6 +62,8 @@ const HeroList = () => {
                     className="mr-2"
                     aria-label="Search"
                     style={{backgroundColor: 'rgb(245, 199, 131)'}}
+                    value={searchVal}
+                    onChange={handleValue}
                 />
                 <Button variant="outline-success" style={{backgroundColor: 'rgb(245, 199, 131)', color: 'black'}}>Search</Button>
             </Form>
