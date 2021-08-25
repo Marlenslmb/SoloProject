@@ -75,7 +75,7 @@ const Details = ({item, history}) => {
             }
         </Paper>
         <div style={{display: 'flex', width: '100%',justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
-            <Comments name={currentUser.email} heroId={detail.id}/>
+            <Comments name={currentUser?.email || 'guest'} heroId={detail.id}/>
             <CommentList detailId={id} history={history} />
         
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useAuth } from '../DotaContext/AuthContext';
 
 
 const useStyles = makeStyles({
@@ -26,6 +27,7 @@ export default function LabelBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState('recents');
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {logout} = useAuth();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -67,9 +69,7 @@ export default function LabelBottomNavigation() {
         <Link to='/registration' style={{textDecoration: 'none'}}>
           <MenuItem onClick={handleClose}>Регистрация</MenuItem>
         </Link>
-        <Link to='/login'>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Link>
+          <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
     </BottomNavigation>
   );
