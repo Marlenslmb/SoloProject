@@ -1,0 +1,26 @@
+.imageBlock{
+    width: 100%;
+    display: none;
+}
+@media all and (max-width: 1200px){
+    .css-doq0dk{
+        display: none;
+    }
+    .imageBlock{
+        display: block;
+    }
+}
+
+@media all and (max-width: 700px){
+    .bottomSecondFooter{
+        justify-content: center;
+        width: 70vw;
+    }
+    p{
+        width: 70vw;
+    }
+    .mainText{
+        width: 70vw;
+        font-size: 15px;
+    }
+}

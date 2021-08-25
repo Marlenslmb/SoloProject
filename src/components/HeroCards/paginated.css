@@ -8,11 +8,19 @@
     background-color: rgb(245, 199, 131) !important;
     width: 300px;
 }
+.cardclass{
+    box-sizing: border-box;
+}
 .cardclass:hover{
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
     transition: 1s;
+    -webkit-box-shadow: rgb(31, 135, 255, 1) -1px 3px 25px 5px inset, rgb(17, 115, 228, 1) 2px 5px 25px 0px, 5px 5px 50px 5px rgba(0,0,0,0); 
+    box-shadow: rgb(31, 135, 255, 1) -1px 3px 25px 5px inset, rgb(17, 115, 228, 1) 2px 5px 25px 0px, 5px 5px 50px 5px rgba(0,0,0,0);
+}
+.card-for-z:hover {
+    z-index: 9;
 }
 .divdivdiv{
     width: 600;
@@ -22,4 +30,15 @@
     margin-bottom: 20px;
     justify-content: center;
     align-items: center;
+}
+@media all and (max-width: 1000px){
+    #imagedetail{
+        display: block;
+    }
+}
+@media all and (max-width: 750px){
+    .imagedetail{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

@@ -2,17 +2,17 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FolderIcon from '@material-ui/icons/Folder';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { Button, Grid, IconButton } from '@material-ui/core';
+import {  Grid, IconButton } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 const useStyles = makeStyles({
   root: {
@@ -25,10 +25,20 @@ const useStyles = makeStyles({
 export default function LabelBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState('recents');
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
 
   return (
     <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
@@ -41,12 +51,26 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction style={{color: 'pink', padding: 0}} label="Instagram" value="Instagram" icon={<InstagramIcon />} href='https://www.instagram.com/' />
       <BottomNavigationAction style={{color: 'blue', padding: 0}} label="Twitter" value="Twitter" icon={<TwitterIcon />} href='https://twitter.com/?lang=ru' />
       <BottomNavigationAction style={{color: 'blue', padding: 0}} label="Telegram" value="Telegram" icon={<TelegramIcon />} href='https://web.telegram.org/k/' />
-      <Link to='/login' style={{textDecoration: 'none'}}>
-        <Button style={{color: 'rgb(245, 199, 131)', marginLeft: 10}}>Вход</Button>
-      </Link>
-      <Link to='/registration' style={{textDecoration: 'none'}}>
-        <Button style={{color: 'rgb(245, 199, 131)', marginLeft: 10, marginRight: 10}}>Регистрация</Button>
-      </Link>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} color='secondary'>
+        Menu
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <Link to='/login' style={{textDecoration: 'none'}}>
+          <MenuItem onClick={handleClose}>Вход</MenuItem>
+        </Link>
+        <Link to='/registration' style={{textDecoration: 'none'}}>
+          <MenuItem onClick={handleClose}>Регистрация</MenuItem>
+        </Link>
+        <Link to='/login'>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        </Link>
+      </Menu>
     </BottomNavigation>
   );
 }

@@ -4,6 +4,7 @@ import './MainBody.css';
 import AOS from 'aos';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './MainBody.css';
 
 const MainBody = () => {
 
@@ -15,8 +16,8 @@ const MainBody = () => {
 
     return (
         <>
-        <div className='upBody' style={{margin: '0 auto', textAlign: 'center' , width: 1050, color: 'rgb(245, 199, 131)'}}>
-            <div style={{fontSize: 50, height: 100}} data-aos="fade-up">
+        <div className='upBody' style={{margin: '0 auto', textAlign: 'center' , width: '70vw', color: 'rgb(245, 199, 131)'}}>
+            <div style={{fontSize: 50, }} data-aos="fade-up" className="mainText">
             ПРИСОЕДИНИТЕСЬ К <br/>
             БИТВЕ ДРЕВНИХ
             </div>
@@ -28,16 +29,16 @@ const MainBody = () => {
         <div style={{fontSize: 80, color: 'rgb(245, 199, 131)',}} className="forImage" >
             <div data-aos="fade-up"
             data-aos-duration="1700">
-                <span style={{fontSize: 50,}}>
+                <span style={{fontSize: 50,} } className="mainText">
                     КОГО ВЫ
                 </span> 
-                <span style={{fontSize: 80}}> 
+                <span style={{fontSize: 80}} className="mainText2"> 
                     <br />
                     ВЫБЕРЕТЕ?
                 </span>
             </div>
         </div>
-        <div style={{fontSize: 30, color: 'rgb(245, 199, 131)', margin: '0 auto', width: 1050, textAlign: 'center', fontFamily: 'Noto-sans san-serif'}}>Список героев в Dota 2 огромен и безгранично разнообразен: здесь вы встретите и магов-тактиков, и свирепых громил, и хитроумных негодяев. Их невероятные способности и сокрушительные ульты непременно приведут вас к победе.</div>
+        <div style={{fontSize: 30, color: 'rgb(245, 199, 131)', margin: '0 auto', width: '70vw', textAlign: 'center', fontFamily: 'Noto-sans san-serif'}}>Список героев в Dota 2 огромен и безгранично разнообразен: здесь вы встретите и магов-тактиков, и свирепых громил, и хитроумных негодяев. Их невероятные способности и сокрушительные ульты непременно приведут вас к победе.</div>
         </div>
         <div style={{width:300, margin: '0 auto', textAlign: 'center'}} className="heroes">
             <Link to='/heroes' style={{textDecoration: 'none'}}>

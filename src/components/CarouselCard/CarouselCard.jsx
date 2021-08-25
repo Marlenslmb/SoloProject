@@ -4,6 +4,7 @@ import uuidv4 from "uuid";
 import { config } from "react-spring";
 import AOS from 'aos';
 import { useEffect } from "react";
+import './carouselcard.css'
 
 const CarouselsCard = () => {
   const [state, setState] = useState({
@@ -123,29 +124,35 @@ const CarouselsCard = () => {
 
   return (
     <div data-aos="zoom-in-down">
-    <div
-      style={{ width: "70%", height: "450px", margin: "0 auto" }}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-    >
-      <Carousel
-        slides={slides}
-        goToSlide={state.goToSlide}
-        offsetRadius={state.offsetRadius}
-        showNavigation={state.showNavigation}
-        animationConfig={state.config}
-        />
+    {/* <div> */}
       <div
-        style={{
-          margin: "0 auto",
-          marginTop: "2rem",
-          width: "50%",
-          display: "flex",
-          justifyContent: "space-around",
-        }}
+        style={{ width: "70%", height: "450px", margin: "0 auto" }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        className='carouselcards'
       >
+        <Carousel
+          slides={slides}
+          goToSlide={state.goToSlide}
+          offsetRadius={state.offsetRadius}
+          showNavigation={state.showNavigation}
+          animationConfig={state.config}
+          className='carouselcards'
+          />
+          <img src='https://www.teahub.io/photos/full/71-714537_mirana-in-dota-2.png' className="imageBlock"/>
+        <div
+          style={{
+            margin: "0 auto",
+            marginTop: "2rem",
+            width: "50%",
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+          className='carouselcards'
+        >
+        </div>
       </div>
-    </div>
+    {/* </div> */}
     </div>
   );
 };

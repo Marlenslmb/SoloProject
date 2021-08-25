@@ -1,5 +1,5 @@
 .forImage{
-    width: 100%;
+    width: 100vw;
     height: 1000px;
     display: flex;
     margin: 0 auto;
@@ -10,4 +10,66 @@
     background-position: center top;
     background-repeat: no-repeat;
     
+}
+@media all and (max-width: 1200px){
+    .css-doq0dk{
+        width: 50vw;
+    }
+}
+@media all and (max-width: 1000px){
+    .imageSpan{
+        font-size: 40px;
+    }
+}
+
+@media all and (max-width: 600px){
+    .mainText{
+        font-size: 30px;
+    }
+    .mainText2{
+        font-size: 50px;
+    }
+
+}
+@media all and (max-width: 450px){
+    .mainText{
+        font-size: 15px;
+    }
+    .mainText2{
+        font-size: 30px;
+    }
+
+}
+@media all and (max-width: 400px){
+    div{
+        font-size: 16px;
+    }
+
+}
+@media all and (max-width: 800px){
+    .forImage{
+        width: 100vw;
+    }
+
+}
+@media all and (max-width: 550px){
+    .mainText{
+        font-size: 45px !important;
+    }
+    .mainText2{
+        font-size: 65px !important;
+    }
+}
+@media all and (max-width: 450px){
+    .mainText{
+        font-size: 30px !important;
+    }
+    .mainText2{
+        font-size: 50px !important;
+    }
+}
+@media all and (max-width: 700px){
+    .texttext{
+        width: 500vw;
+    }
 }

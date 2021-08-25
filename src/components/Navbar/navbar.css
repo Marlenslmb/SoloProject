@@ -1,0 +1,27 @@
+
+@media all and (max-width: 700px){
+    .MuiTypography-body1{
+        width: 100px;
+    }
+    
+}
+@media all and (max-width: 550px){
+    #navbar{
+        font-size: 35px;
+        margin: 0;
+    }    
+}
+@media all and (max-width: 420px){
+    .MuiTypography-body1{
+        font-size: 16px !important;
+    }
+    .MuiToolbar-root{
+        flex-direction: column !important;
+        align-items: flex-start !important;
+
+
+    }
+    .MuiButtonBase-root{
+        padding: 0 !important;
+    }
+}

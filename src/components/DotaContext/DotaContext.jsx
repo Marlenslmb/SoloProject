@@ -9,6 +9,8 @@ const INIT_STATE = {
     detail: {},
     edit: null,
     paginatedPages: 1,
+    cart: {},
+    cartLength: 0,
 }
 const reducer = (state = INIT_STATE, action) => {
     switch(action.type){
@@ -27,6 +29,16 @@ const reducer = (state = INIT_STATE, action) => {
             return{
                 ...state,
                 edit: action.payload
+            }
+        case "GET_FAVORITE_HERO":
+            return{
+                ...state,
+                cart: action.payload
+            }
+        case "CHANGE_FAVORITE_COUNT":
+            return{
+                ...state,
+                cartLength: action.payload
             }
 
         default : return state
@@ -47,12 +59,6 @@ const DotaContextProvider = ({children}) => {
     }
 
     const getHeroes = async (history) => {
-
-        // let data = await axios.get(`windows.location/hero?_limit=60`)
-        // dispatch({
-        //     type: "GET_HERO",
-        //     payload: data
-        // })
 
         const search = new URLSearchParams(history.location.search)
         search.set('_limit', 60)
@@ -92,13 +98,61 @@ const DotaContextProvider = ({children}) => {
 
     const getDetail = async (id) => {
         const {data} = await axios.get(`${API}/hero/${id}`)
+        const res = await axios.get(`${API}/hero/${id}?_embed=comments`)
+        console.log(res)
         dispatch({
             type: "GET_DETAIL_HERO",
             payload: data
         })
-
     }
 
+    const addHeroesInCart = (hero) => {
+        let cart = JSON.parse(localStorage.getItem('cart'))
+        if(!cart){
+            cart = {
+                heroes: [],
+            }
+        }
+        let newHero = {
+            item: hero,
+        }
+        let filteredHero = cart.heroes.filter(elem => elem.item.id === hero.id)
+        if(filteredHero.length > 0){
+            cart.heroes = cart.heroes.filter(elem => elem.item.id !== hero.id)
+        }else{
+            cart.heroes.push(newHero)
+        }
+        localStorage.setItem('cart', JSON.stringify(cart))
+        dispatch({
+            type: 'GET_FAVORITE_HERO',
+            payload: cart.heroes.length
+        })
+    }
+
+    const getCart = () => {
+        let cart = JSON.parse(localStorage.getItem('cart'))
+        if(!cart){
+            cart = {
+                heroes: []
+            }
+        }
+        dispatch({
+            type: 'GET_FAVORITE_HERO',
+            payload: cart
+        })
+    }
+
+    const checkHeroesInCart = (id) => {
+        let cart = JSON.parse(localStorage.getItem('cart'))
+        if(!cart){
+            cart = {
+                heroes: []
+            }
+        }
+        let newCart = cart.heroes.filter(elem => elem.item.id == id)
+        return newCart.length > 0 ? true : false
+
+    }
 
     return (
         <dotaContext.Provider value={{
@@ -106,12 +160,17 @@ const DotaContextProvider = ({children}) => {
             detail: state.detail,
             edit: state.edit,
             paginatedPages: state.paginatedPages,
+            cart: state.cart,
+            cartLength: state.cartLength,
             addHeroes,
             getHeroes,
             deleteHeroes,
             saveEditHero,
             editHeroes,
             getDetail,
+            checkHeroesInCart,
+            getCart,
+            addHeroesInCart,
 
         }}
         >
